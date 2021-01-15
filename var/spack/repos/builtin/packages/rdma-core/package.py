@@ -29,7 +29,7 @@ class RdmaCore(CMakePackage):
     depends_on('py-docutils', type='build')
     depends_on('libnl')
     conflicts('platform=darwin', msg='rdma-core requires FreeBSD or Linux')
-    conflicts('%intel', msg='rdma-core cannot be built with intel (use gcc instead)')
+    patch("rdma-core-dirsize.patch")
 
 # NOTE: specify CMAKE_INSTALL_RUNDIR explicitly to prevent rdma-core from
 #       using the spack staging build dir (which may be a very long file
